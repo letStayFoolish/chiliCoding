@@ -7,23 +7,18 @@ Beginner - Lost Without a Map
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-We need a function that can transform a string into a number. What ways of achieving this do you know?
+Given an array of integers, return a new array with each value doubled.
 
-Note: Don't worry, all inputs will be strings, and every string is a perfectly valid representation of an integral number.
+For example:
 
-Examples
-
-"1234" --> 1234
-"605"  --> 605
-"1405" --> 1405
-"-7" --> -7
+[1, 2, 3] --> [2, 4, 6]
 ****************************************************************************************************************************************************
 */
 // Type your code:
 
-const stringToNumber = function(str){
-  return parseInt(str, 10);
-}
+function maps(x){
+  return x.map(number => number*2);
+};
 
 // Console Log:
-console.log(stringToNumber('-7'));
+console.log(maps([1, 2, 3]));
