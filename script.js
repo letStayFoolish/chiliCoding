@@ -1,19 +1,16 @@
 /*
+Beginner - Lost Without a Map
 
-ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+Given an array of integers, return a new array with each value doubled.
 
-If the function is passed a valid PIN string, return true, else return false.
+For example:
+
+[1, 2, 3] --> [2, 4, 6]
 
 */
 // Type your code:
-function validatePIN (pin) {
-  
-  const onlyNumbers = pin.match(pin.match(/^\d+$/));
-  const pinLength = (pin.length == 4 || pin.length == 6);
-  
-  if(onlyNumbers && pinLength) {
-    return true;
-  } return false;
-};
+function maps(x){
+  return x.map(number => Math.pow(number, 2))
+}
 // Console Log:
-console.log(validatePIN('2341'));
+console.log(maps([2, 2, 2, 2, 2, 2])); // [4, 4, 4, 4, 4, 4]
