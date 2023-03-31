@@ -1,24 +1,44 @@
 /*
 ****************************************************************************************************************************************************
 TITLE:
-Beginner - Lost Without a Map
+Counting sheep...
 ****************************************************************************************************************************************************
 
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Given an array of integers, return a new array with each value doubled.
+Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
 
-For example:
+For example,
 
-[1, 2, 3] --> [2, 4, 6]
+[true,  true,  true,  false,
+  true,  true,  true,  true ,
+  true,  false, true,  false,
+  true,  false, false, true ,
+  true,  true,  true,  true ,
+  false, false, true,  true]
+The correct answer would be 17.
+
+Hint: Don't forget to check for bad values like null/undefined
 ****************************************************************************************************************************************************
 */
 // Type your code:
+function countSheeps(arrayOfSheep) {
+  let number = 0;
 
-function maps(x){
-  return x.map(number => number*2);
+  for(let i = 0; i < arrayOfSheep.length; i++)
+    if(arrayOfSheep[i] == true)
+      number++;
+      return number;
 };
 
+
 // Console Log:
-console.log(maps([1, 2, 3]));
+console.log(countSheeps([
+  true, true, true, false,
+  true, true, true, true ,
+  true, false, true, false,
+  true, false, false, true ,
+  true, true, true, true ,
+  false, false, true, true
+]));
