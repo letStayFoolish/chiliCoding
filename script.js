@@ -1,44 +1,31 @@
 /*
 ****************************************************************************************************************************************************
 TITLE:
-Counting sheep...
+Grasshopper - Grade book
 ****************************************************************************************************************************************************
 
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+Grade book
 
-For example,
+Complete the function so that it finds the average of the three scores passed to it and returns the letter value associated with that grade.
 
-[true,  true,  true,  false,
-  true,  true,  true,  true ,
-  true,  false, true,  false,
-  true,  false, false, true ,
-  true,  true,  true,  true ,
-  false, false, true,  true]
-The correct answer would be 17.
-
-Hint: Don't forget to check for bad values like null/undefined
+Numerical Score	Letter Grade
+90 <= score <= 100	'A'
+80 <= score < 90	'B'
+70 <= score < 80	'C'
+60 <= score < 70	'D'
+0 <= score < 60	'F'
+Tested values are all between 0 and 100. Theres is no need to check for negative values or values greater than 100.
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function countSheeps(arrayOfSheep) {
-  let number = 0;
-
-  for(let i = 0; i < arrayOfSheep.length; i++)
-    if(arrayOfSheep[i] == true)
-      number++;
-      return number;
-};
-
+function getGrade (s1, s2, s3) {
+  // Code here
+  const averageGrade = (s1 + s2 + s3)/3;
+  return averageGrade >= 90 ? 'A' : averageGrade < 90 && averageGrade >= 80 ? 'B' : averageGrade < 80 && averageGrade >= 70 ? 'C' : averageGrade < 70 && averageGrade >= 60 ? 'D' : 'F';
+}
 
 // Console Log:
-console.log(countSheeps([
-  true, true, true, false,
-  true, true, true, true ,
-  true, false, true, false,
-  true, false, false, true ,
-  true, true, true, true ,
-  false, false, true, true
-]));
+console.log(getGrade(99, 67, 87));
