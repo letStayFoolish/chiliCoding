@@ -2,37 +2,25 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Remove the minimum
+Two to One
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-The museum of incredible dull things
+Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
 
-The museum of incredible dull things wants to get rid of some exhibitions. Miriam, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and then removes the one with the lowest rating.
+Examples:
 
-However, just as she finished rating all exhibitions, she's off to an important fair, so she asks you to write a program that tells her the ratings of the items after one removed the lowest one. Fair enough.
+a = "xyaabbbccccdefww"
+b = "xxxxyyyyabklmopq"
+longest(a, b) -> "abcdefklmopqwxy"
 
-Task
-
-Given an array of integers, remove the smallest value. Do not mutate the original array/list. If there are multiple elements with the same value, remove the one with a lower index. If you get an empty array/list, return an empty array/list.
-
-Don't change the order of the elements that are left.
-
-Examples
-
-* Input: [1,2,3,4,5], output = [2,3,4,5]
-* Input: [5,3,2,1,4], output = [5,3,2,4]
-* Input: [2,2,1,2,1], output = [2,2,2,1]
+a = "abcdefghijklmnopqrstuvwxyz"
+longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function removeSmallest(numbers) {
-  // Find a min value in array:
-  const minNumber = Math.min(...numbers);
-  const indexOfMinNum = numbers.indexOf(minNumber);
-  // Return an new array without that min value:
-  return [...numbers.slice(0, indexOfMinNum), ...numbers.slice(indexOfMinNum + 1)]
+function longest(s1, s2) {
+  return Array.from(new Set(s1.toLowerCase() + s2.toLowerCase())).sort().join('');
 }
-
 // Console Log:
-console.log(removeSmallest([3,2,3,4,1,5]));
+console.log(longest('Nemanja', 'Karaklajic'));
