@@ -2,25 +2,30 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Two to One
+Find the stray number
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+You are given an odd-length array of integers, in which all of them are the same, except for one single number.
 
-Examples:
+Complete the method which accepts such an array, and returns that single different number.
 
-a = "xyaabbbccccdefww"
-b = "xxxxyyyyabklmopq"
-longest(a, b) -> "abcdefklmopqwxy"
+The input array will always be valid! (odd-length >= 3)
 
-a = "abcdefghijklmnopqrstuvwxyz"
-longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"
+Examples
+
+[1, 1, 2] ==> 2
+[17, 17, 3, 17, 17, 17, 17] ==> 3
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function longest(s1, s2) {
-  return Array.from(new Set(s1.toLowerCase() + s2.toLowerCase())).sort().join('');
-}
+function stray(numbers) {
+  // First make your array sorted so you can easily find the one item taht is different from others within array:
+  const arraySorted = numbers.sort();
+
+  if(arraySorted[0] !== arraySorted[1]) {
+    return arraySorted[0];
+  } return arraySorted[arraySorted.length - 1]
+};
 // Console Log:
-console.log(longest('Nemanja', 'Karaklajic'));
+console.log(stray([17, 17, 3, 17, 17, 17, 17]));
