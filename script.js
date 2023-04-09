@@ -2,34 +2,23 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Ones and Zeros
+Thinkful - Logic Drills: Traffic light
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Given an array of ones and zeroes, convert the equivalent binary value to an integer.
+You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
 
-Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
+Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.
 
-Examples:
-
-Testing: [0, 0, 0, 1] ==> 1
-Testing: [0, 0, 1, 0] ==> 2
-Testing: [0, 1, 0, 1] ==> 5
-Testing: [1, 0, 0, 1] ==> 9
-Testing: [0, 0, 1, 0] ==> 2
-Testing: [0, 1, 1, 0] ==> 6
-Testing: [1, 1, 1, 1] ==> 15
-Testing: [1, 0, 1, 1] ==> 11
-However, the arrays can have varying lengths, not just limited to 4.
+For example, when the input is green, output should be yellow.
 ****************************************************************************************************************************************************
 */
 // Type your code:
-const binaryArrayToNumber = arr => {
-  return parseInt(arr.join(''), 2);
+function updateLight(current) {
+  return current === 'green' ? 'yellow' : current === 'yellow' ? 'red' : 'green'
 }
-
 // Console Log:
-console.log(binaryArrayToNumber([0, 1, 1, 1])); // 11
+console.log(updateLight('yellow')); // 'red'
 /****************************************************************************************************************************************************/
 
 // Using loop:
