@@ -2,30 +2,68 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Find the stray number
+Ones and Zeros
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-You are given an odd-length array of integers, in which all of them are the same, except for one single number.
+Given an array of ones and zeroes, convert the equivalent binary value to an integer.
 
-Complete the method which accepts such an array, and returns that single different number.
+Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
 
-The input array will always be valid! (odd-length >= 3)
+Examples:
 
-Examples
-
-[1, 1, 2] ==> 2
-[17, 17, 3, 17, 17, 17, 17] ==> 3
+Testing: [0, 0, 0, 1] ==> 1
+Testing: [0, 0, 1, 0] ==> 2
+Testing: [0, 1, 0, 1] ==> 5
+Testing: [1, 0, 0, 1] ==> 9
+Testing: [0, 0, 1, 0] ==> 2
+Testing: [0, 1, 1, 0] ==> 6
+Testing: [1, 1, 1, 1] ==> 15
+Testing: [1, 0, 1, 1] ==> 11
+However, the arrays can have varying lengths, not just limited to 4.
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function stray(numbers) {
-  // First make your array sorted so you can easily find the one item taht is different from others within array:
-  const arraySorted = numbers.sort();
+const binaryArrayToNumber = arr => {
+  return parseInt(arr.join(''), 2);
+}
 
-  if(arraySorted[0] !== arraySorted[1]) {
-    return arraySorted[0];
-  } return arraySorted[arraySorted.length - 1]
-};
 // Console Log:
-console.log(stray([17, 17, 3, 17, 17, 17, 17]));
+console.log(binaryArrayToNumber([0, 1, 1, 1])); // 11
+/****************************************************************************************************************************************************/
+
+// Using loop:
+/*
+function sumTo(n) {
+  let sum = 0;
+
+  for(let i = 1; i <= n; i++) {
+    sum += i;
+  }
+  return sum;
+}
+
+console.log(sumTo(100));
+*/
+
+// Using a recursion, cause sumTo(n) = n + sumTo(n-1) for n > 1:
+/*
+function sumTo(n) {
+  if(n === 1) {
+    return n;
+  } else {
+    return n + sumTo(n - 1);
+  }
+}
+
+console.log(sumTo(100));
+*/
+
+// Fibonacci numbers
+/*
+function fib(n) {
+  return (n <= 1) ? n : fib(n - 1) + fib(n - 2);
+}
+
+console.log(fib(7)) // 13
+*/
