@@ -21,23 +21,22 @@ checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
 ****************************************************************************************************************************************************
 */
 // Type your code:
-/*
-function filter_list(l) {
-  // Return a new array with the strings filtered out
-  return l.filter((item) => {
-    if((typeof item) === 'number') {
-      return item;
-    };
-  })
-}
-*/
-function filter_list(array) {
-  return array.filter(number => {
-    return typeof number == 'number'
-  })
+function checkExam(array1, array2) {
+  let score = 0;
+
+  for(let i = 0; i < array1.length; i++) {
+    if(array1[i] === array2[i]) {
+      score += 4;
+    } else if(array1[i] === '' || array2[i] === '') {
+      score += 0;
+    } else {
+      score -= 1;
+    }
+  }
+  return score < 0 ? 0 : score;
 }
 // Console Log:
-console.log(filter_list([1,'a','b',0,15])); // [1,0,15]
+console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", ""])); // 
 /****************************************************************************************************************************************************/
 
 // Using loop:
