@@ -2,23 +2,42 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Thinkful - Logic Drills: Traffic light
+Check the exam
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
+The first input array is the key to the correct answers to an exam, like ["a", "a", "b", "d"]. The second one contains a student's submitted answers.
 
-Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.
+The two arrays are not empty and are the same length. Return the score for this array of answers, giving +4 for each correct answer, -1 for each incorrect answer, and +0 for each blank answer, represented as an empty string (in C the space character is used).
 
-For example, when the input is green, output should be yellow.
+If the score < 0, return 0.
+
+For example:
+
+checkExam(["a", "a", "b", "b"], ["a", "c", "b", "d"]) → 6
+checkExam(["a", "a", "c", "b"], ["a", "a", "b",  ""]) → 7
+checkExam(["a", "a", "b", "c"], ["a", "a", "b", "c"]) → 16
+checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function updateLight(current) {
-  return current === 'green' ? 'yellow' : current === 'yellow' ? 'red' : 'green'
+/*
+function filter_list(l) {
+  // Return a new array with the strings filtered out
+  return l.filter((item) => {
+    if((typeof item) === 'number') {
+      return item;
+    };
+  })
+}
+*/
+function filter_list(array) {
+  return array.filter(number => {
+    return typeof number == 'number'
+  })
 }
 // Console Log:
-console.log(updateLight('yellow')); // 'red'
+console.log(filter_list([1,'a','b',0,15])); // [1,0,15]
 /****************************************************************************************************************************************************/
 
 // Using loop:
