@@ -21,22 +21,13 @@ checkExam(["b", "c", "b", "a"], ["",  "a", "a", "c"]) → 0
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function checkExam(array1, array2) {
-  let score = 0;
-
-  for(let i = 0; i < array1.length; i++) {
-    if(array1[i] === array2[i]) {
-      score += 4;
-    } else if(array1[i] === '' || array2[i] === '') {
-      score += 0;
-    } else {
-      score -= 1;
-    }
-  }
-  return score < 0 ? 0 : score;
+function getRandomNumber(minNumber, maxNumber, length) {
+  return Array(length).fill().map(() => {
+    return Math.floor(Math.random() * (maxNumber - minNumber) + minNumber);
+  });
 }
 // Console Log:
-console.log(checkExam(["a", "a", "b", "b"], ["a", "c", "b", ""])); // 
+console.log(getRandomNumber(1, 39, 7)); // 
 /****************************************************************************************************************************************************/
 
 // Using loop:
