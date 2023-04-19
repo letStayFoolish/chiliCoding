@@ -2,53 +2,47 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Are they the "same"?
+Tribonacci Sequence
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whether the two arrays have the "same" elements, with the same multiplicities (the multiplicity of a member is the number of times it appears). "Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+Well met with Fibonacci bigger brother, AKA Tribonacci.
 
-Examples
-Valid arrays
-a = [121, 144, 19, 161, 19, 144, 19, 11]  
-b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
-comp(a, b) returns true because in b 121 is the square of 11, 14641 is the square of 121, 20736 the square of 144, 361 the square of 19, 25921 the square of 161, and so on. It gets obvious if we write b's elements in terms of squares:
+As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2) numbers of the sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying to pronounce it :(
 
-a = [121, 144, 19, 161, 19, 144, 19, 11] 
-b = [11*11, 121*121, 144*144, 19*19, 161*161, 19*19, 144*144, 19*19]
-Invalid arrays
-If, for example, we change the first number to something else, comp is not returning true anymore:
+So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
 
-a = [121, 144, 19, 161, 19, 144, 19, 11]  
-b = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
-comp(a,b) returns false because in b 132 is not the square of any number of a.
+[1, 1 ,1, 3, 5, 9, 17, 31, ...]
+But what if we started with [0, 0, 1] as a signature? As starting with [0, 1] instead of [1, 1] basically shifts the common Fibonacci sequence by once place, you may be tempted to think that we would get the same sequence shifted by 2 places, but that is not the case and we would get:
 
-a = [121, 144, 19, 161, 19, 144, 19, 11]  
-b = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
-comp(a,b) returns false because in b 36100 is not the square of any number of a.
+[0, 0, 1, 1, 2, 4, 7, 13, 24, ...]
+Well, you may have guessed it by now, but to be clear: you need to create a fibonacci function that given a signature array/list, returns the first n elements - signature included of the so seeded sequence.
 
-Remarks
-a or b might be [] or {} (all languages except R, Shell).
-a or b might be nil or null or None or nothing (except in C++, COBOL, Crystal, D, Dart, Elixir, Fortran, F#, Haskell, Nim, OCaml, Pascal, Perl, PowerShell, Prolog, PureScript, R, Racket, Rust, Shell, Swift).
-If a or b are nil (or null or None, depending on the language), the problem doesn't make sense so return false.
+Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified ;)
 
-Note for C
-The two arrays have the same size (> 0) given as parameter in function comp.
+If you enjoyed this kata more advanced and generalized version of it can be found in the Xbonacci kata
+
+[Personal thanks to Professor Jim Fowler on Coursera for his awesome classes that I really recommend to any math enthusiast and for showing me this mathematical curiosity too with his usual contagious passion :)]
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function comp(array1, array2){
-  // Compare two of arrays:
-  if(array1 === null || array2 === null) return false;
-  array1.sort((a, b) => a - b);
-  array2.sort((a, b) => a - b);
-  return array1.map(item => item * item).every((item, i) => item == array2[i]);
+// function tribonacci(signature,n){
+function tribonacci(signature,n){
+  let n1 = signature[0], n2 = signature[1], n3 = signature[2], nextTerm;
+  let result = [];
+  for(let i = 0; i < n; i++) {
+    result[i] = n1;
+    nextTerm = n1 + n2 + n3;
+    n1 = n2;
+    n2 = n3;
+    n3 = nextTerm;
+  }
+  return result;
 }
 // Console Log:
-console.log(comp(
-  [0, 121, 144, 19, 161, 19, 144, 19, 11], 
-  [121, 14641, 20736, 361, 25921, 361, 20736, 361]
-  )); // false 
+console.log(tribonacci([1,1,1], 10)); // [1,1,1,3,5,9,17,31,57,105] 
+
+// console.log(tribonacci([1,1,1], 10)); // [1,1,1,3,5,9,17,31,57,105] 
 /****************************************************************************************************************************************************/
 
 // Using loop:
