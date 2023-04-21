@@ -2,33 +2,36 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Write Number in Expanded Form
+Mexican Wave
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Write Number in Expanded Form
-You will be given a number and you will need to return it as a string in Expanded Form. For example:
+Task
+In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up.
 
-expandedForm(12); // Should return '10 + 2'
-expandedForm(42); // Should return '40 + 2'
-expandedForm(70304); // Should return '7000 + 300 + 4'
-NOTE: All numbers will be whole numbers greater than 0.
+Rules
+ 1.  The input string will always be lower case but maybe empty.
+ 2.  If the character in the string is whitespace then pass over it as if it was an empty seat
 
-If you liked this kata, check out part 2!!
+Example
+wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function expandedForm(num) {
-  return num.toString()
-  .split('')
-  .reverse()
-  .map((number, i) => number*Math.pow(10, i))
-  .filter(number => number > 0)
-  .reverse()
-  .join(' + ');
+function wave(str){
+  let newArr = []
+  for(let i = 0; i < str.length; i++) {
+    const splitStr = str.split('');
+    if(splitStr[i] !== ' ') {
+      splitStr[i] = splitStr[i].toUpperCase();
+      newArr.push(splitStr.join(''))
+    }
+    
+  }
+  return newArr;
 }
 // Console Log:
-console.log(expandedForm(4056)); // '7000 + 300 + 4'
+console.log(wave('hello')); // 
 /****************************************************************************************************************************************************/
 
 // Using loop:
