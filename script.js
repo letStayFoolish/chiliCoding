@@ -2,36 +2,29 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Mexican Wave
+Jaden Casing Strings
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Task
-In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up.
+Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
 
-Rules
- 1.  The input string will always be lower case but maybe empty.
- 2.  If the character in the string is whitespace then pass over it as if it was an empty seat
+Example:
 
-Example
-wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
+Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function wave(str){
-  let newArr = []
-  for(let i = 0; i < str.length; i++) {
-    const splitStr = str.split('');
-    if(splitStr[i] !== ' ') {
-      splitStr[i] = splitStr[i].toUpperCase();
-      newArr.push(splitStr.join(''))
-    }
-    
+function toJadenCase(str1) {
+  const str2 = str1.split(' ');
+  
+  for(let i = 0; i < str2.length; i++) {
+    str2[i] = str2[i].charAt(0).toUpperCase() + str2[i].slice(1)
   }
-  return newArr;
-}
+  return str2.join(' ')
+};
 // Console Log:
-console.log(wave('hello')); // 
+console.log(toJadenCase('How can mirrors be real if our eyes aren\'t real')); // "How Can Mirrors Be Real If Our Eyes Aren't Real"
 /****************************************************************************************************************************************************/
 
 // Using loop:
