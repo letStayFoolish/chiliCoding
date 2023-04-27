@@ -2,29 +2,25 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Jaden Casing Strings
+Delete occurrences of an element if it occurs more than n times
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Your task is to convert strings to how they would be written by Jaden Smith. The strings are actual quotes from Jaden Smith, but they are not capitalized in the same way he originally typed them.
-
-Example:
-
-Not Jaden-Cased: "How can mirrors be real if our eyes aren't real"
-Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
+Given a list and a number, create a new list that contains each number of list at most N times, without reordering.
+For example if the input number is 2, and the input list is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+With list [20,37,20,21] and number 1, the result would be [20,37,21].
 ****************************************************************************************************************************************************
 */
 // Type your code:
-function toJadenCase(str1) {
-  const str2 = str1.split(' ');
-  
-  for(let i = 0; i < str2.length; i++) {
-    str2[i] = str2[i].charAt(0).toUpperCase() + str2[i].slice(1)
-  }
-  return str2.join(' ')
-};
+function deleteNth(arr,n){
+  let counts = {};
+  return arr.filter((value) => {
+    counts[value] = (counts[value] || 0) + 1;
+    return counts[value] <= n;
+  });
+}
 // Console Log:
-console.log(toJadenCase('How can mirrors be real if our eyes aren\'t real')); // "How Can Mirrors Be Real If Our Eyes Aren't Real"
+console.log(deleteNth([1,2,3,1,2,1,2,3],2)); // [20,37,21].
 /****************************************************************************************************************************************************/
 
 // Using loop:
