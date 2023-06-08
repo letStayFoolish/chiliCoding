@@ -2,25 +2,44 @@
 ****************************************************************************************************************************************************
 TITLE:
 ****************************************************************************************************************************************************
-Delete occurrences of an element if it occurs more than n times
+Number of People in the Bus
 ****************************************************************************************************************************************************
 DESCRIPTION:
 ****************************************************************************************************************************************************
-Given a list and a number, create a new list that contains each number of list at most N times, without reordering.
-For example if the input number is 2, and the input list is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
-With list [20,37,20,21] and number 1, the result would be [20,37,21].
+There is a bus moving in the city which takes and drops some people at each bus stop.
+
+You are provided with a list (or array) of integer pairs. Elements of each pair represent the number of people that get on the bus (the first item) and the number of people that get off the bus (the second item) at a bus stop.
+
+Your task is to return the number of people who are still on the bus after the last bus stop (after the last array). Even though it is the last bus stop, the bus might not be empty and some people might still be inside the bus, they are probably sleeping there :D
+
+Take a look on the test cases.
+
+Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the returned integer can't be negative.
+
+The second value in the first pair in the array is 0, since the bus is empty in the first bus stop.
 ****************************************************************************************************************************************************
 */
+const kataLink =
+  'https://www.codewars.com/kata/5648b12ce68d9daa6b000099/train/javascript';
 // Type your code:
-function deleteNth(arr,n){
-  let counts = {};
-  return arr.filter((value) => {
-    counts[value] = (counts[value] || 0) + 1;
-    return counts[value] <= n;
-  });
-}
+const number = (busStops) => {
+  let pplGetIn = 0;
+  let pplGetOut = 0;
+
+  for (let i = 0; i < busStops.length; i++) {
+    pplGetIn += busStops[i][0];
+    pplGetOut += busStops[i][1];
+  }
+  return pplGetIn - pplGetOut;
+};
 // Console Log:
-console.log(deleteNth([1,2,3,1,2,1,2,3],2)); // [20,37,21].
+console.log(
+  number([
+    [10, 0],
+    [3, 5],
+    [5, 8],
+  ])
+); // 5
 /****************************************************************************************************************************************************/
 
 // Using loop:
@@ -58,3 +77,26 @@ function fib(n) {
 
 console.log(fib(7)) // 13
 */
+const heading = document.querySelector('h1');
+const headingLink = heading.querySelector('a');
+heading.addEventListener('click', () => {
+  headingLink.setAttribute('href', kataLink);
+  headingLink.setAttribute('target', '_blank');
+});
+const subheading = document.querySelector('h2');
+const subheadingLink = subheading.querySelector('a');
+subheading.addEventListener('click', () => {
+  subheadingLink.setAttribute('href', 'https://www.codewars.com/dashboard');
+  subheadingLink.setAttribute('target', '_blank');
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  headingLink.removeEventListener('click', () => {
+    headingLink.setAttribute('href', kataLink);
+    headingLink.setAttribute('target', '_blank');
+  });
+  subheading.removeEventListener('click', () => {
+    subheadingLink.setAttribute('href', 'https://www.codewars.com/dashboard');
+    subheadingLink.setAttribute('target', '_blank');
+  });
+});
