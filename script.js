@@ -1,46 +1,59 @@
 /*
-****************************************************************************************************************************************************
+**********************************************************************************************************
 TITLE:
-****************************************************************************************************************************************************
-Number of People in the Bus
-****************************************************************************************************************************************************
+**********************************************************************************************************
+6 kyu Who likes it?
+**********************************************************************************************************
 DESCRIPTION:
-****************************************************************************************************************************************************
-There is a bus moving in the city which takes and drops some people at each bus stop.
+**********************************************************************************************************
+You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
 
-You are provided with a list (or array) of integer pairs. Elements of each pair represent the number of people that get on the bus (the first item) and the number of people that get off the bus (the second item) at a bus stop.
+Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
 
-Your task is to return the number of people who are still on the bus after the last bus stop (after the last array). Even though it is the last bus stop, the bus might not be empty and some people might still be inside the bus, they are probably sleeping there :D
+[]                                -->  "no one likes this"
+["Peter"]                         -->  "Peter likes this"
+["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
 
-Take a look on the test cases.
-
-Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the returned integer can't be negative.
-
-The second value in the first pair in the array is 0, since the bus is empty in the first bus stop.
-****************************************************************************************************************************************************
-*/
+Note: For 4 or more names, the number in "and 2 others" simply increases.
+*********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/5648b12ce68d9daa6b000099/train/javascript';
+  'https://www.codewars.com/kata/5266876b8f4bf2da9b000362/train/javascript';
 // Type your code:
-const number = (busStops) => {
-  let pplGetIn = 0;
-  let pplGetOut = 0;
+function likes(names) {
+  const likes = names.length;
 
-  for (let i = 0; i < busStops.length; i++) {
-    pplGetIn += busStops[i][0];
-    pplGetOut += busStops[i][1];
+  if (likes !== undefined) {
+    switch (likes) {
+      case 0:
+        return 'no one likes this';
+        break;
+      case 1:
+        return `${names[0]} likes this`;
+        break;
+      case 2:
+        return `${names[0]} and ${names[1]} like this`;
+        break;
+      case 3:
+        return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+        break;
+      default:
+        return `${names[0]}, ${names[1]} and ${likes - 2} others like this`;
+    }
+  } else {
+    return 'no one likes this';
   }
-  return pplGetIn - pplGetOut;
-};
+}
 // Console Log:
-console.log(
-  number([
-    [10, 0],
-    [3, 5],
-    [5, 8],
-  ])
-); // 5
-/****************************************************************************************************************************************************/
+// console.log(likes(['Alex', 'Jacob', 'Mark', 'Max'])); // "Alex, Jacob and 2 others like this"
+likes(['Alex', 'Jacob', 'Mark', 'Max', 'Chili', 'Irina', 'Damjan', 'Tamara']); // "Alex, Jacob and 6 others like this"
+likes(['Alex', 'Jacob', 'Mark', 'Max']); // "Alex, Jacob and 2 others like this"
+likes(['Alex', 'Jacob', 'Mark']); // "Alex, Jacob and Mark like this"
+// likes(['Alex', 'Jacob']); // "Alex and Jacob like this"
+// likes(['Alex']); // "Alex likes this"
+// likes([]); // "no one likes this"
+/*********************************************************************************************************/
 
 // Using loop:
 /*
