@@ -2,57 +2,55 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-6 kyu Who likes it?
+6 kyu Count the smiley faces!
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
 
-Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+Rules for a smiling face:
 
-[]                                -->  "no one likes this"
-["Peter"]                         -->  "Peter likes this"
-["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
-["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
-["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
+A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
+Every smiling face must have a smiling mouth that should be marked with either ) or D
+No additional characters are allowed except for those mentioned.
 
-Note: For 4 or more names, the number in "and 2 others" simply increases.
+Valid smiley face examples: :) :D ;-D :~)
+Invalid smiley faces: ;( :> :} :]
+
+Example
+countSmileys([':)', ';(', ';}', ':-D']);       // should return 2;
+countSmileys([';D', ':-(', ':-)', ';~)']);     // should return 3;
+countSmileys([';]', ':[', ';*', ':$', ';-D']); // should return 1;
+Note
+In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/5266876b8f4bf2da9b000362/train/javascript';
+  'https://www.codewars.com/kata/583203e6eb35d7980400002a/javascript';
 // Type your code:
-function likes(names) {
-  const likes = names.length;
-
-  if (likes !== undefined) {
-    switch (likes) {
-      case 0:
-        return 'no one likes this';
-        break;
-      case 1:
-        return `${names[0]} likes this`;
-        break;
-      case 2:
-        return `${names[0]} and ${names[1]} like this`;
-        break;
-      case 3:
-        return `${names[0]}, ${names[1]} and ${names[2]} like this`;
-        break;
-      default:
-        return `${names[0]}, ${names[1]} and ${likes - 2} others like this`;
-    }
-  } else {
-    return 'no one likes this';
-  }
+//return the total number of smiling faces in the array
+function countSmileys(arr) {
+  const smiley = [
+    ':)',
+    ':-)',
+    ':D',
+    ':-D',
+    ';)',
+    ';-)',
+    ';D',
+    ';-D',
+    ':~)',
+    ':~D',
+    ';~)',
+    ';~D',
+  ];
+  const count = arr.filter((item) => {
+    return smiley.indexOf(item) !== -1;
+  }).length;
+  return count;
 }
-// Console Log:
-// console.log(likes(['Alex', 'Jacob', 'Mark', 'Max'])); // "Alex, Jacob and 2 others like this"
-likes(['Alex', 'Jacob', 'Mark', 'Max', 'Chili', 'Irina', 'Damjan', 'Tamara']); // "Alex, Jacob and 6 others like this"
-likes(['Alex', 'Jacob', 'Mark', 'Max']); // "Alex, Jacob and 2 others like this"
-likes(['Alex', 'Jacob', 'Mark']); // "Alex, Jacob and Mark like this"
-// likes(['Alex', 'Jacob']); // "Alex and Jacob like this"
-// likes(['Alex']); // "Alex likes this"
-// likes([]); // "no one likes this"
+
+countSmileys([':D', ':~)', ';~D', ':)']); // 4
 /*********************************************************************************************************/
 
 // Using loop:
