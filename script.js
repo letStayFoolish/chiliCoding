@@ -2,55 +2,30 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-6 kyu Count the smiley faces!
+8 kyu Summation
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
 
-Rules for a smiling face:
+For example (Input -> Output):
 
-Each smiley face must contain a valid pair of eyes. Eyes can be marked as : or ;
-A smiley face can have a nose but it does not have to. Valid characters for a nose are - or ~
-Every smiling face must have a smiling mouth that should be marked with either ) or D
-No additional characters are allowed except for those mentioned.
-
-Valid smiley face examples: :) :D ;-D :~)
-Invalid smiley faces: ;( :> :} :]
-
-Example
-countSmileys([':)', ';(', ';}', ':-D']);       // should return 2;
-countSmileys([';D', ':-(', ':-)', ';~)']);     // should return 3;
-countSmileys([';]', ':[', ';*', ':$', ';-D']); // should return 1;
-Note
-In case of an empty array return 0. You will not be tested with invalid input (input will always be an array). Order of the face (eyes, nose, mouth) elements will always be the same.
+2 -> 3 (1 + 2)
+8 -> 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/583203e6eb35d7980400002a/javascript';
+  'https://www.codewars.com/kata/55d24f55d7dd296eb9000030/train/javascript';
 // Type your code:
-//return the total number of smiling faces in the array
-function countSmileys(arr) {
-  const smiley = [
-    ':)',
-    ':-)',
-    ':D',
-    ':-D',
-    ';)',
-    ';-)',
-    ';D',
-    ';-D',
-    ':~)',
-    ':~D',
-    ';~)',
-    ';~D',
-  ];
-  const count = arr.filter((item) => {
-    return smiley.indexOf(item) !== -1;
-  }).length;
-  return count;
+function summation(num) {
+  let arr = [];
+  for (let i = 1; i <= num; i++) {
+    arr.push(i);
+  }
+
+  return arr.reduce((acc, curr) => acc + curr, 0);
 }
 
-countSmileys([':D', ':~)', ';~D', ':)']); // 4
+summation(8); // 10
 /*********************************************************************************************************/
 
 // Using loop:
