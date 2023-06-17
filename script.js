@@ -2,27 +2,28 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-7 kyu Sort Numbers
+7 kyu Testing 1-2-3
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
+Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
 
-For example:
+Write a function which takes a list of strings and returns each line prepended by the correct number.
 
-solution([1, 2, 10, 50, 5]); // should return [1,2,5,10,50]
-solution(null); // should return []
+The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+
+Examples: (Input --> Output)
+
+[] --> []
+["a", "b", "c"] --> ["1: a", "2: b", "3: c"]
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/5174a4c0f2769dd8b1000003/train/javascript';
+  'https://www.codewars.com/kata/54bf85e3d5b56c7a05000cf9/train/javascript';
 // Type your code:
-function solution(nums) {
-  let sorted = [];
-  nums !== null ? (sorted = nums.sort((a, b) => a - b)) : sorted;
-  return sorted;
-}
-solution([1, 2, 10, 50, 5]); // 1, 2, 5, 10, 50
-solution(null); // []
+var number = function (array) {
+  return array.map((item, index) => (item = `${index + 1}: ${item}`));
+};
+console.log(number(['a', 'b', 'c'])); // ["1: a", "2: b", "3: c"]
 /*********************************************************************************************************/
 
 // Using loop:
