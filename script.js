@@ -2,30 +2,27 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-8 kyu Summation
+7 kyu Sort Numbers
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0.
+Finish the solution so that it sorts the passed in array of numbers. If the function passes in an empty array or null/nil value then it should return an empty array.
 
-For example (Input -> Output):
+For example:
 
-2 -> 3 (1 + 2)
-8 -> 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)
+solution([1, 2, 10, 50, 5]); // should return [1,2,5,10,50]
+solution(null); // should return []
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/55d24f55d7dd296eb9000030/train/javascript';
+  'https://www.codewars.com/kata/5174a4c0f2769dd8b1000003/train/javascript';
 // Type your code:
-function summation(num) {
-  let arr = [];
-  for (let i = 1; i <= num; i++) {
-    arr.push(i);
-  }
-
-  return arr.reduce((acc, curr) => acc + curr, 0);
+function solution(nums) {
+  let sorted = [];
+  nums !== null ? (sorted = nums.sort((a, b) => a - b)) : sorted;
+  return sorted;
 }
-
-summation(8); // 10
+solution([1, 2, 10, 50, 5]); // 1, 2, 5, 10, 50
+solution(null); // []
 /*********************************************************************************************************/
 
 // Using loop:
