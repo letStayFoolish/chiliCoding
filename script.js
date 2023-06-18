@@ -2,28 +2,30 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-7 kyu Testing 1-2-3
+7 kyu Binary Addition
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
+Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
 
-Write a function which takes a list of strings and returns each line prepended by the correct number.
+The binary number returned should be a string.
 
-The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+Examples:(Input1, Input2 --> Output (explanation)))
 
-Examples: (Input --> Output)
-
-[] --> []
-["a", "b", "c"] --> ["1: a", "2: b", "3: c"]
+1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
+5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/54bf85e3d5b56c7a05000cf9/train/javascript';
+  'https://www.codewars.com/kata/551f37452ff852b7bd000139/train/javascript';
 // Type your code:
-var number = function (array) {
-  return array.map((item, index) => (item = `${index + 1}: ${item}`));
-};
-console.log(number(['a', 'b', 'c'])); // ["1: a", "2: b", "3: c"]
+function addBinary(a, b) {
+  const sum = a + b;
+  let str = '';
+  return (str = sum.toString(2));
+  // Shorter solution
+  // return (a+b).toString(2)
+}
+console.log(addBinary(5, 9));
 /*********************************************************************************************************/
 
 // Using loop:
