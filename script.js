@@ -2,35 +2,31 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-8 kyu Sum The Strings
+8 kyu Grasshopper - Messi goals function
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Create a function that takes 2 integers in form of a string as an input, and outputs the sum (also as a string):
+Messi goals function
+Messi is a soccer player with goals in three leagues:
 
-Example: (Input1, Input2 -->Output)
+LaLiga
+Copa del Rey
+Champions
+Complete the function to return his total number of goals in all three leagues.
 
-"4",  "5" --> "9"
-"34", "5" --> "39"
-"", "" --> "0"
-"2", "" --> "2"
-"-5", "3" --> "-2"
-Notes:
+Note: the input will always be valid.
 
-If either input is an empty string, consider it as zero.
+For example:
 
-Inputs and the expected output will never exceed the signed 32-bit integer limit (2^31 - 1)
+5, 10, 2  -->  17
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/5966e33c4e686b508700002d/javascript';
+  'https://www.codewars.com/kata/55f73be6e12baaa5900000d4/javascript';
 // Type your code:
-function sumStr(a, b) {
-  // convert 'a' & 'b' to a integers (putting "+" in front of the sign):
-  const sum = +a + +b;
-  // convert it back to a string:
-  return sum.toString();
+function goals (laLigaGoals, copaDelReyGoals, championsLeagueGoals) {
+  return laLigaGoals + copaDelReyGoals + championsLeagueGoals
 }
-console.log(sumStr('1', '6'));
+console.log(goals(5, 10, 2)) // 17
 /*********************************************************************************************************/
 
 // Using loop:
