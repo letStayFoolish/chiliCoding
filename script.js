@@ -2,30 +2,43 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-7 kyu Binary Addition
+8 kyu Filter out the geese
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+Write a function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
 
-The binary number returned should be a string.
+The geese are any strings in the following array, which is pre-populated in your solution:
 
-Examples:(Input1, Input2 --> Output (explanation)))
+  ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+For example, if this array were passed as an argument:
 
-1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
-5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
+ ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
+Your function would return the following array:
+
+["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
+The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed. Note that all of the strings will be in the same case as those provided, and some elements may be repeated.
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/551f37452ff852b7bd000139/train/javascript';
+  'https://www.codewars.com/kata/57ee4a67108d3fd9eb0000e7/train/javascript';
 // Type your code:
-function addBinary(a, b) {
-  const sum = a + b;
-  let str = '';
-  return (str = sum.toString(2));
-  // Shorter solution
-  // return (a+b).toString(2)
+function gooseFilter(birds) {
+  var geese = ['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher'];
+
+  return birds.filter((item, index) => !geese.includes(item));
 }
-console.log(addBinary(5, 9));
+console.log(
+  gooseFilter([
+    'Mallard',
+    'Nemanja',
+    'Hook Bill',
+    'African',
+    'Crested',
+    'Pilgrim',
+    'Toulouse',
+    'Blue Swedish',
+  ])
+); // ["Mallard", "Nemanja", "Hook Bill", "Crested", "Blue Swedish"]
 /*********************************************************************************************************/
 
 // Using loop:
