@@ -2,43 +2,35 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-8 kyu Filter out the geese
+8 kyu Sum The Strings
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Write a function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
+Create a function that takes 2 integers in form of a string as an input, and outputs the sum (also as a string):
 
-The geese are any strings in the following array, which is pre-populated in your solution:
+Example: (Input1, Input2 -->Output)
 
-  ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
-For example, if this array were passed as an argument:
+"4",  "5" --> "9"
+"34", "5" --> "39"
+"", "" --> "0"
+"2", "" --> "2"
+"-5", "3" --> "-2"
+Notes:
 
- ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
-Your function would return the following array:
+If either input is an empty string, consider it as zero.
 
-["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
-The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed. Note that all of the strings will be in the same case as those provided, and some elements may be repeated.
+Inputs and the expected output will never exceed the signed 32-bit integer limit (2^31 - 1)
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/57ee4a67108d3fd9eb0000e7/train/javascript';
+  'https://www.codewars.com/kata/5966e33c4e686b508700002d/javascript';
 // Type your code:
-function gooseFilter(birds) {
-  var geese = ['African', 'Roman Tufted', 'Toulouse', 'Pilgrim', 'Steinbacher'];
-
-  return birds.filter((item, index) => !geese.includes(item));
+function sumStr(a, b) {
+  // convert 'a' & 'b' to a integers (putting "+" in front of the sign):
+  const sum = +a + +b;
+  // convert it back to a string:
+  return sum.toString();
 }
-console.log(
-  gooseFilter([
-    'Mallard',
-    'Nemanja',
-    'Hook Bill',
-    'African',
-    'Crested',
-    'Pilgrim',
-    'Toulouse',
-    'Blue Swedish',
-  ])
-); // ["Mallard", "Nemanja", "Hook Bill", "Crested", "Blue Swedish"]
+console.log(sumStr('1', '6'));
 /*********************************************************************************************************/
 
 // Using loop:
