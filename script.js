@@ -2,31 +2,62 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-8 kyu Grasshopper - Messi goals function
+6 kyu Simple Encryption #1 - Alternating Split
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Messi goals function
-Messi is a soccer player with goals in three leagues:
+Implement a pseudo-encryption algorithm which given a string text and an integer n concatenates all the odd-indexed characters of S with all the even-indexed characters of text, this process should be repeated n times.
 
-LaLiga
-Copa del Rey
-Champions
-Complete the function to return his total number of goals in all three leagues.
+Examples:
 
-Note: the input will always be valid.
+encrypt("012345", 1)  =>  "135024"
+encrypt("012345", 2)  =>  "135024"  ->  "304152"
+encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
 
-For example:
+encrypt("01234", 1)  =>  "13024"
+encrypt("01234", 2)  =>  "13024"  ->  "32104"
+encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
+Together with the encryption function, you should also implement a decryption function which reverses the process.
 
-5, 10, 2  -->  17
+If the string text is an empty value or the integer n is not positive, return the first argument without changes.
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/55f73be6e12baaa5900000d4/javascript';
+  'https://www.codewars.com/kata/57814d79a56c88e3e0000786/train/javascript';
 // Type your code:
-function goals (laLigaGoals, copaDelReyGoals, championsLeagueGoals) {
-  return laLigaGoals + copaDelReyGoals + championsLeagueGoals
+function encrypt(text, n) {
+  if (n <= 0 || !text) {
+    return text
+  }
+  let second = text.split('').filter((item, index) => index % 2 === 1)
+  let rest = text.split('').filter((item, index) => index % 2 === 0)
+  return encrypt(second.concat(rest).join(''), n-1)
 }
-console.log(goals(5, 10, 2)) // 17
+
+function decrypt(encryptedText, n) {
+  if (n <= 0 || !encryptedText) {
+    return encryptedText
+  }
+  let mid = Math.floor(encryptedText.length / 2)
+  let first = encryptedText.split('').slice(mid)
+  let second = encryptedText.split('').slice(0, mid)
+  console.log(first, second)
+  let arr = []
+  for(let i = 0; i < encryptedText.length; i++) {
+    if (i % 2 === i - 1) {
+      arr.push(second[i])
+      arr.push(first[i])
+    } else {
+      arr.push(first[i])
+      arr.push(second[i])
+    }
+  }
+  return decrypt(arr.join(''), n-1)
+}
+console.log(decrypt('135024', 1)) // "012345"
+
+console.log(encrypt('012345', 1)) // "135024"
+console.log(encrypt('01234', 2)) // "13024"  ->  "32104"
+console.log(encrypt('012345', 3)) // "135024"  ->  "304152"  ->  "012345"
 /*********************************************************************************************************/
 
 // Using loop:
