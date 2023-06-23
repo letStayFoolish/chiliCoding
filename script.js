@@ -2,62 +2,34 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-6 kyu Simple Encryption #1 - Alternating Split
+6 kyu Duplicate Encoder
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Implement a pseudo-encryption algorithm which given a string text and an integer n concatenates all the odd-indexed characters of S with all the even-indexed characters of text, this process should be repeated n times.
+The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
 
-Examples:
+Examples
+"din"      =>  "((("
+"recede"   =>  "()()()"
+"Success"  =>  ")())())"
+"(( @"     =>  "))(("
+Notes
+Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
 
-encrypt("012345", 1)  =>  "135024"
-encrypt("012345", 2)  =>  "135024"  ->  "304152"
-encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
 
-encrypt("01234", 1)  =>  "13024"
-encrypt("01234", 2)  =>  "13024"  ->  "32104"
-encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
-Together with the encryption function, you should also implement a decryption function which reverses the process.
-
-If the string text is an empty value or the integer n is not positive, return the first argument without changes.
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/57814d79a56c88e3e0000786/train/javascript';
+  'https://www.codewars.com/kata/54b42f9314d9229fd6000d9c/train/javascript';
 // Type your code:
-function encrypt(text, n) {
-  if (n <= 0 || !text) {
-    return text
-  }
-  let second = text.split('').filter((item, index) => index % 2 === 1)
-  let rest = text.split('').filter((item, index) => index % 2 === 0)
-  return encrypt(second.concat(rest).join(''), n-1)
+function duplicateEncode(word) {
+  return word.toLowerCase().split("").map((item, index, array) => {
+    return word.indexOf(item) == array.lastIndexOf(item) ? ")" : "("
+  }).join("")
 }
 
-function decrypt(encryptedText, n) {
-  if (n <= 0 || !encryptedText) {
-    return encryptedText
-  }
-  let mid = Math.floor(encryptedText.length / 2)
-  let first = encryptedText.split('').slice(mid)
-  let second = encryptedText.split('').slice(0, mid)
-  console.log(first, second)
-  let arr = []
-  for(let i = 0; i < encryptedText.length; i++) {
-    if (i % 2 === i - 1) {
-      arr.push(second[i])
-      arr.push(first[i])
-    } else {
-      arr.push(first[i])
-      arr.push(second[i])
-    }
-  }
-  return decrypt(arr.join(''), n-1)
-}
-console.log(decrypt('135024', 1)) // "012345"
-
-console.log(encrypt('012345', 1)) // "135024"
-console.log(encrypt('01234', 2)) // "13024"  ->  "32104"
-console.log(encrypt('012345', 3)) // "135024"  ->  "304152"  ->  "012345"
+console.log(duplicateEncode("recedee")); // "()()()"
+console.log(duplicateEncode("dinn")); // "((("
+console.log(duplicateEncode("(( @")); //
 /*********************************************************************************************************/
 
 // Using loop:
