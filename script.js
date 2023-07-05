@@ -2,34 +2,46 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-6 kyu Duplicate Encoder
+7 kyu Anagram Detection
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-The goal of this exercise is to convert a string to a new string where each character in the new string is "(" if that character appears only once in the original string, or ")" if that character appears more than once in the original string. Ignore capitalization when determining if a character is a duplicate.
+An anagram is the result of rearranging the letters of a word to produce a new word (see wikipedia).
+
+Note: anagrams are case insensitive
+
+Complete the function to return true if the two arguments given are anagrams of each other; return false otherwise.
 
 Examples
-"din"      =>  "((("
-"recede"   =>  "()()()"
-"Success"  =>  ")())())"
-"(( @"     =>  "))(("
-Notes
-Assertion messages may be unclear about what they display in some languages. If you read "...It Should encode XXX", the "XXX" is the expected result, not the input!
+"foefet" is an anagram of "toffee"
+
+"Buckethead" is an anagram of "DeathCubeK"
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/54b42f9314d9229fd6000d9c/train/javascript';
+  'https://www.codewars.com/kata/529eef7a9194e0cbc1000255/train/javascript';
 // Type your code:
-function duplicateEncode(word) {
-  return word.toLowerCase().split("").map((item, index, array) => {
-    return word.indexOf(item) == array.lastIndexOf(item) ? ")" : "("
-  }).join("")
-}
+// write the function isAnagram
+function isAnagram(test, original) {
+  // check letters matching in both strings:
+  const arrTest = test.toLowerCase().split("").sort().join("")
+  const arrOriginal = original.toLowerCase().split("").sort().join("")
 
-console.log(duplicateEncode("recedee")); // "()()()"
-console.log(duplicateEncode("dinn")); // "((("
-console.log(duplicateEncode("(( @")); //
+  if(arrTest.length === arrOriginal.length) {
+    return arrTest === arrOriginal
+  } else {
+    return false
+  }
+
+};
+
+console.log(isAnagram('foefet', 'toffee')) // true
+console.log(isAnagram('DeathCubeK', 'Buckethead')) // true
+console.log(isAnagram('Twoo', 'WooT')) // true
+console.log('False results: ')
+console.log(isAnagram('dumble', 'bumble')) // false
+console.log(isAnagram('apple', 'pale')) // false
 /*********************************************************************************************************/
 
 // Using loop:
