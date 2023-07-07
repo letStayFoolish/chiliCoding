@@ -2,38 +2,69 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-6 kyu Two Sum
+6 kyu Give me a Diamond
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
+Jamie is a programmer, and James' girlfriend. She likes diamonds and wants a diamond string from James. Since James doesn't know how to make this happen, he needs your help.
 
-For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
+Task
+You need to return a string that looks like a diamond shape when printed on the screen, using asterisk (*) characters. Trailing spaces should be removed, and every line must be terminated with a newline character (\n).
 
-The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
+Return null/nil/None/... if the input is an even number or negative, as it is not possible to print a diamond of even or negative size.
+* Examples
+A size 3 diamond:
 
-Based on: http://oj.leetcode.com/problems/two-sum/
+ *
+***
+ *
+...which would appear as a string of " *\n***\n *\n"
 
-twoSum([1, 2, 3], 4) // returns [0, 2] or [2, 0]
+A size 5 diamond:
+
+  *
+ ***
+*****
+ ***
+  *
+...that is:
+
+"  *\n ***\n*****\n ***\n  *\n"
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/52c31f8e6605bcc646000082/train/javascript';
+  'https://www.codewars.com/kata/5503013e34137eeeaa001648/train/javascript';
 // Type your code:
-// write the function isAnagram
-function twoSum(nums, target) {
-  for(let i = 0; i < nums.length; i++) {
-    for(let j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target) return [i, j]
-    }
+function diamond(n){
+  if(n % 2 === 0 || n < 1) {
+    return null
   }
+  let dFirstHalf = []
+  // First half of a diamond:
+  for(let i = 0; i < (n - 1)/2; i++) {
+    dFirstHalf.push(' '.repeat(((n - 1)/2) - i) + '*'.repeat(i * 2 + 1) + '\n')
+  }
+  // Second half of a diamond:
+  return ([...dFirstHalf, "*".repeat(n) + '\n', ...dFirstHalf.reverse()].join(''))
+
+
+  // Solution 2:
+  // function diamond (n) {
+  //   if (n <= 0 || n % 2 === 0) return null
+  //   str = ''
+  //   for (let i = 0; i < n; i++) {
+  //     let len = Math.abs((n-2*i-1)/2)
+  //     str += ' '.repeat(len)
+  //     str += '*'.repeat(n-2*len)
+  //     str += '\n'
+  //   }
+  //   return str
+  // }
 }
 
-console.log(twoSum([1, 2, 3], 4)) // [0, 2] or [2, 0] => 1 + 3 = 4 or 3 + 1 = 4
-console.log(twoSum([3, 2, 4], 6)) // [1, 2]
-console.log(twoSum([2,7,11,15], 9)) // [0, 1]
-console.log(twoSum([-370, -545, -687, -450, -450, -770, 407, -849, -531, -549, 874, 839, 10, 36, -41, -454, -589, 520, 391, -204, -926, 402, -152, -360, 497, -1000, 366, -247, -116, 879, 658, -453, 596, -94, -285, 892, -747, -193, -614, -45, -724, 64, -727, -625, 363, 782, 802, -609, -805, 789, -275, -810, -291, 359, 797, -958, 897, 673, -249, -181, 589, -981, -282, -520, -751, 809, 980, 344, 747, -230, -887, 95, 52, -693, 708], 88)) // [0, 1]
+console.log(diamond(3)) // " *\n***\n *\n"
+console.log(diamond(5)) // "  *\n ***\n*****\n ***\n  *\n"
 /*********************************************************************************************************/
 
 // Using loop:
