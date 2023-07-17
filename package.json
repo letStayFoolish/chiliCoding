@@ -1,0 +1,11 @@
+{
+  "name": "chilicoding",
+  "version": "1.0.0",
+  "description": "Template in VSCode (html + js) to fast enough type code for codeWars",
+  "main": "script.js",
+  "scripts": {
+    "start": "node script.js"
+  },
+  "author": "chili",
+  "license": "ISC"
+}
