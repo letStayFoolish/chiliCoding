@@ -2,34 +2,47 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-6 kyu Replace With Alphabet Position
+7 kyu Make a function that does arithmetic!
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-DESCRIPTION:
-Welcome.
+Given two numbers and an arithmetic operator (the name of it, as a string), return the result of the two numbers having that operator used on them.
+a and b will both be positive integers, and a will always be the first number in the operation, and b always the second.
+The four operators are "add", "subtract", "divide", "multiply".
+A few examples:(Input1, Input2, Input3 --> Output)
 
-In this kata you are required to, given a string, replace every letter with its position in the alphabet.
-
-If anything in the text isn't a letter, ignore it and don't return it.
-
-"a" = 1, "b" = 2, etc.
-
-Example
-alphabetPosition("The sunset sets at twelve o' clock.")
-Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" ( as a string )
+5, 2, "add"      --> 7
+5, 2, "subtract" --> 3
+5, 2, "multiply" --> 10
+5, 2, "divide"   --> 2.5
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/546f922b54af40e1e90001da/javascript';
+  'https://www.codewars.com/kata/583f158ea20cfcbeb400000a/train/javascript';
 // Type your code:
-function alphabetPosition(text) {
-  const alphabet = "abcdefghijklmnopqrstuvwxyz".split('')
-  return text.toLowerCase().split('').map((item) => alphabet.indexOf(item) + 1).filter(item => item !== 0).join(' ')
+function arithmetic(a, b, operator){
+  //your code here!
+  switch (operator) {
+    case 'add':
+      return a + b
+    break
+    case 'subtract':
+      return a - b
+    break
+    case 'multiply':
+      return a * b
+      break
+    case 'divide':
+      return a / b
+    break
+  }
 }
 
-console.log(alphabetPosition("The sunset sets at twelve o' clock.")) // "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11"
+console.log(arithmetic(5,2,'add')) // 7
+console.log(arithmetic(5,2,'subtract')) // 3
+console.log(arithmetic(5,2,'multiply')) // 10
+console.log(arithmetic(5,2,'divide')) // 2.5
 /*********************************************************************************************************/
 
 // Using loop:
