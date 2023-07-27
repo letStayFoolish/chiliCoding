@@ -2,47 +2,36 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-7 kyu Make a function that does arithmetic!
+7 kyu The highest profit wins!
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Given two numbers and an arithmetic operator (the name of it, as a string), return the result of the two numbers having that operator used on them.
-a and b will both be positive integers, and a will always be the first number in the operation, and b always the second.
-The four operators are "add", "subtract", "divide", "multiply".
-A few examples:(Input1, Input2, Input3 --> Output)
+Story
+Ben has a very simple idea to make some profit: he buys something and sells it again. Of course, this wouldn't give him any profit at all if he was simply to buy and sell it at the same price. Instead, he's going to buy it for the lowest possible price and sell it at the highest.
 
-5, 2, "add"      --> 7
-5, 2, "subtract" --> 3
-5, 2, "multiply" --> 10
-5, 2, "divide"   --> 2.5
+Task
+Write a function that returns both the minimum and maximum number of the given list/array.
+
+Examples (Input --> Output)
+[1,2,3,4,5] --> [1,5]
+[2334454,5] --> [5,2334454]
+[1]         --> [1,1]
+Remarks
+All arrays or lists will always have at least one element, so you don't need to check the length. Also, your function will always get an array or a list, you don't have to check for null, undefined or similar.
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/583f158ea20cfcbeb400000a/train/javascript';
+  'https://www.codewars.com/kata/559590633066759614000063/train/javascript';
 // Type your code:
-function arithmetic(a, b, operator){
-  //your code here!
-  switch (operator) {
-    case 'add':
-      return a + b
-    break
-    case 'subtract':
-      return a - b
-    break
-    case 'multiply':
-      return a * b
-      break
-    case 'divide':
-      return a / b
-    break
-  }
-}
+function minMax(arr){
+  const minNum = Math.min(...arr)
+  const maxNum = Math.max(...arr)
 
-console.log(arithmetic(5,2,'add')) // 7
-console.log(arithmetic(5,2,'subtract')) // 3
-console.log(arithmetic(5,2,'multiply')) // 10
-console.log(arithmetic(5,2,'divide')) // 2.5
+  return [minNum, maxNum];
+}
+console.log(minMax([1,2,3,4,5])) // [1, 5]
+
 /*********************************************************************************************************/
 
 // Using loop:
