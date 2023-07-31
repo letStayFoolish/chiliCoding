@@ -2,41 +2,35 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-8 kyu Lario and Muigi Pipe Problem
+5 kyu Extract the domain name from a URL
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Issue
-Looks like some hoodlum plumber and his brother has been running around and damaging your stages again.
+Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
 
-The pipes connecting your level's stages together need to be fixed before you receive any more complaints.
-
-Pipes list is correct when each pipe after the first index is greater (+1) than the previous one, and that there is no duplicates.
-
-Task
-Given the a list of numbers, return a fixed list so that the values increment by 1 for each index from the minimum value up to the maximum value (both included).
-
-Example
-Input:  1,3,5,6,7,8 Output: 1,2,3,4,5,6,7,8
+* url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+* url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
+* url = "https://www.cnet.com"                -> domain name = cnet"
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/56b29582461215098d00000f/train/javascript';
+  'https://www.codewars.com/kata/514a024011ea4fb54200004b/train/javascript';
 // Type your code:
-function pipeFix(numbers){
-  const first = numbers[0]
-  const last = numbers[numbers.length - 1]
-  const res = []
+function domainName(url){
+  // Solution 1:
+  // let domain = new URL(url)
+  // return domain.hostname.split('.')[0]
 
-  for (let i = first; i <= last; i++) {
-    res.push(i)
-  }
-  return res
+  // Solution 2:
+  const src = url.replace('http://', '').replace('https://', '').replace('www.', '').split('.')
+  const domain = src[0]
+  return domain
 }
 
-console.log(pipeFix([1,2,3,5,6,8,9]))
-console.log(pipeFix([1,2,3,12])) // [1,2,3,4,5,6,7,8,9,10,11,12]
+console.log(domainName('http://github.com/carbonfive/raygun')) // 'github'
+console.log(domainName('http://www.zombie-bites.com')) // "zombie-bites"
+console.log(domainName('https://www.cnet.com')) // 'cnet'
 
 /*********************************************************************************************************/
 
