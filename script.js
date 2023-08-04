@@ -2,35 +2,46 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-5 kyu Extract the domain name from a URL
+6 kyu Your order, please
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
 
-* url = "http://github.com/carbonfive/raygun" -> domain name = "github"
-* url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
-* url = "https://www.cnet.com"                -> domain name = cnet"
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/514a024011ea4fb54200004b/train/javascript';
+  'https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/javascript';
 // Type your code:
-function domainName(url){
+function order(words){
+  if (words === '') return ''
+
   // Solution 1:
-  // let domain = new URL(url)
-  // return domain.hostname.split('.')[0]
+  // const findNumber = words.match(/[1-9]/g) // 2, 1, 4, 3
+  // const arrayWords = words.split(' ')
+  // let result = []
+  //
+  // arrayWords.map((item, i) => {
+  //   let counter = (i+1).toString()
+  //   const index = findNumber.indexOf(counter);
+  //   result.push(arrayWords[index]);
+  // });
+  // return result.join(' ')
 
   // Solution 2:
-  const src = url.replace('http://', '').replace('https://', '').replace('www.', '').split('.')
-  const domain = src[0]
-  return domain
+  return words.split(' ').sort(function(a, b){
+    return a.match(/\d/) - b.match(/\d/)
+  }).join(' ')
+
 }
 
-console.log(domainName('http://github.com/carbonfive/raygun')) // 'github'
-console.log(domainName('http://www.zombie-bites.com')) // "zombie-bites"
-console.log(domainName('https://www.cnet.com')) // 'cnet'
+
+console.log(order('is2 Thi1s T4est 3a')) // "Thi1s is2 3a T4est"
+console.log(order('')) // ""
 
 /*********************************************************************************************************/
 
@@ -64,7 +75,22 @@ console.log(sumTo(100));
 // Fibonacci numbers
 /*
 function fib(n) {
+  // Solution 1 (slower one):
+
   return (n <= 1) ? n : fib(n - 1) + fib(n - 2);
+
+  // Solution 2 (speed):
+
+  function fib(n) {
+    let a = 0, b = 1, c = n
+
+    for (let i = 2; i <= n; i++) {
+        c = a + b
+        a = b
+        b = c
+    }
+    return c
+}
 }
 
 console.log(fib(7)) // 13
