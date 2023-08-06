@@ -2,46 +2,32 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-6 kyu Your order, please
+7 kyu Summing a number's digits
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
 
-Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+For example: (Input --> Output)
 
-If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+10 --> 1
+99 --> 18
+-32 --> 5
+Let's assume that all numbers in the input will be integer values.
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/javascript';
+  'https://www.codewars.com/kata/52f3149496de55aded000410/solutions/javascript';
 // Type your code:
-function order(words){
-  if (words === '') return ''
-
-  // Solution 1:
-  // const findNumber = words.match(/[1-9]/g) // 2, 1, 4, 3
-  // const arrayWords = words.split(' ')
-  // let result = []
-  //
-  // arrayWords.map((item, i) => {
-  //   let counter = (i+1).toString()
-  //   const index = findNumber.indexOf(counter);
-  //   result.push(arrayWords[index]);
-  // });
-  // return result.join(' ')
-
-  // Solution 2:
-  return words.split(' ').sort(function(a, b){
-    return a.match(/\d/) - b.match(/\d/)
-  }).join(' ')
-
+function sumDigits(number) {
+  return Math.abs(number).toString().split('').reduce((a, b) => +a + +b, 0)
 }
 
 
-console.log(order('is2 Thi1s T4est 3a')) // "Thi1s is2 3a T4est"
-console.log(order('')) // ""
+console.log(sumDigits(99)) // 18
+console.log(sumDigits(-32)) // 18
+console.log(sumDigits(0)) // 0
 
 /*********************************************************************************************************/
 
