@@ -2,32 +2,35 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-7 kyu Summing a number's digits
+8 kyu How good are you really?
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Write a function named sumDigits which takes a number as input and returns the sum of the absolute value of each of the number's decimal digits.
+There was a test in your class and you passed it. Congratulations!
+But you're an ambitious person. You want to know if you're better than the average student in your class.
 
-For example: (Input --> Output)
+You receive an array with your peers' test scores. Now calculate the average and compare your score!
 
-10 --> 1
-99 --> 18
--32 --> 5
-Let's assume that all numbers in the input will be integer values.
+Return True if you're better, else False!
+
+Note:
+Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/52f3149496de55aded000410/solutions/javascript';
+  'https://www.codewars.com/kata/5601409514fc93442500010b/train/javascript';
 // Type your code:
-function sumDigits(number) {
-  return Math.abs(number).toString().split('').reduce((a, b) => +a + +b, 0)
+function betterThanAverage(classPoints, yourPoints) {
+  let sum = classPoints.reduce((a, b) => a + b, 0)
+  sum = sum + yourPoints
+  const average = Math.floor(sum / (classPoints.length + 1))
+
+  return average < yourPoints
 }
 
 
-console.log(sumDigits(99)) // 18
-console.log(sumDigits(-32)) // 18
-console.log(sumDigits(0)) // 0
+console.log(betterThanAverage([100, 40, 34, 57, 29, 72, 57, 88], 75)) // true
 
 /*********************************************************************************************************/
 
