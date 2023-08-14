@@ -2,35 +2,57 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-8 kyu How good are you really?
+7 kyu Two fighters, one winner.
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-There was a test in your class and you passed it. Congratulations!
-But you're an ambitious person. You want to know if you're better than the average student in your class.
+Create a function that returns the name of the winner in a fight between two fighters.
 
-You receive an array with your peers' test scores. Now calculate the average and compare your score!
+Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
 
-Return True if you're better, else False!
+Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
 
-Note:
-Your points are not included in the array of your class's points. For calculating the average point you may add your point to the given array!
+Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
+
+Your function also receives a third argument, a string, with the name of the fighter that attacks first.
+
+Example:
+  declare_winner(Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew") => "Lew"
+
+  Lew attacks Harry; Harry now has 3 health.
+  Harry attacks Lew; Lew now has 6 health.
+  Lew attacks Harry; Harry now has 1 health.
+  Harry attacks Lew; Lew now has 2 health.
+  Lew attacks Harry: Harry now has -1 health and is dead. Lew wins.
+  *
+function Fighter(name, health, damagePerAttack) {
+        this.name = name;
+        this.health = health;
+        this.damagePerAttack = damagePerAttack;
+        this.toString = function() { return this.name; }
+}
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/5601409514fc93442500010b/train/javascript';
+  'https://www.codewars.com/kata/577bd8d4ae2807c64b00045b/train/javascript';
 // Type your code:
-function betterThanAverage(classPoints, yourPoints) {
-  let sum = classPoints.reduce((a, b) => a + b, 0)
-  sum = sum + yourPoints
-  const average = Math.floor(sum / (classPoints.length + 1))
+function declareWinner(fighter1, fighter2, firstAttacker) {
+  // Damage
+  let damage1 = Math.ceil(fighter1.health / fighte2.damagePerAttack),
+    damage2 = Math.ceil(fighter2.health / fighte1.damagePerAttack)
 
-  return average < yourPoints
+  if (damage1 > damage2) {
+    return fighter1.name
+  } else if (damage1 < damage2) {
+    return fighter2.name
+  }
+  return firstAttacker
+
 }
 
 
-console.log(betterThanAverage([100, 40, 34, 57, 29, 72, 57, 88], 75)) // true
+console.log((declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harry", 5, 4), "Lew"))) // "Lew"
 
 /*********************************************************************************************************/
 
