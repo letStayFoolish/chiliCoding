@@ -2,57 +2,38 @@
 **********************************************************************************************************
 TITLE:
 **********************************************************************************************************
-7 kyu Two fighters, one winner.
+7 kyu Dropcaps
 **********************************************************************************************************
 DESCRIPTION:
 **********************************************************************************************************
-Create a function that returns the name of the winner in a fight between two fighters.
+DropCaps means that the first letter of the starting word of the paragraph should be in caps and the remaining lowercase, just like you see in the newspaper.
 
-Each fighter takes turns attacking the other and whoever kills the other first is victorious. Death is defined as having health <= 0.
+But for a change, let"s do that for each and every word of the given String. Your task is to capitalize every word that has length greater than 2, leaving smaller words as they are.
 
-Each fighter will be a Fighter object/instance. See the Fighter class below in your chosen language.
+*should work also on Leading and Trailing Spaces and caps.
 
-Both health and damagePerAttack (damage_per_attack for python) will be integers larger than 0. You can mutate the Fighter objects.
-
-Your function also receives a third argument, a string, with the name of the fighter that attacks first.
-
-Example:
-  declare_winner(Fighter("Lew", 10, 2), Fighter("Harry", 5, 4), "Lew") => "Lew"
-
-  Lew attacks Harry; Harry now has 3 health.
-  Harry attacks Lew; Lew now has 6 health.
-  Lew attacks Harry; Harry now has 1 health.
-  Harry attacks Lew; Lew now has 2 health.
-  Lew attacks Harry: Harry now has -1 health and is dead. Lew wins.
-  *
-function Fighter(name, health, damagePerAttack) {
-        this.name = name;
-        this.health = health;
-        this.damagePerAttack = damagePerAttack;
-        this.toString = function() { return this.name; }
-}
+"apple"            => "Apple"
+"apple of banana"  => "Apple of Banana"
+"one   space"      => "One   Space"
+"   space WALK   " => "   Space Walk   "
+Note: you will be provided atleast one word and should take string as input and return string as output.
 
 
 *********************************************************************************************************/
 const kataLink =
-  'https://www.codewars.com/kata/577bd8d4ae2807c64b00045b/train/javascript';
+  'https://www.codewars.com/kata/559e5b717dd758a3eb00005a/train/javascript';
 // Type your code:
-function declareWinner(fighter1, fighter2, firstAttacker) {
-  // Damage
-  let damage1 = Math.ceil(fighter1.health / fighte2.damagePerAttack),
-    damage2 = Math.ceil(fighter2.health / fighte1.damagePerAttack)
-
-  if (damage1 > damage2) {
-    return fighter1.name
-  } else if (damage1 < damage2) {
-    return fighter2.name
-  }
-  return firstAttacker
-
+function dropCap(n) {
+  return n.split(' ').map((item) => {
+    if (item.length > 2) {
+      return item[0].toUpperCase() + item.slice(1).toLowerCase()
+    } else {
+      return item
+    }
+  }).join(' ')
 }
-
-
-console.log((declareWinner(new Fighter("Lew", 10, 2), new Fighter("Harry", 5, 4), "Lew"))) // "Lew"
+// item.length > 2 && item[0].toUpperCase()
+console.log(dropCap('Revelation of the contents outraged American public opinion, and helped generate')) // "Revelation of The Contents Outraged American Public Opinion, And Helped Generate"
 
 /*********************************************************************************************************/
 
